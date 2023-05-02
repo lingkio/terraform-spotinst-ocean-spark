@@ -1,6 +1,5 @@
 provider "aws" {
   region  = var.aws_region
-  profile = var.aws_profile
 }
 
 data "aws_eks_cluster" "this" {
@@ -31,11 +30,6 @@ module "ocean-aws-k8s" {
   security_groups             = [var.node_security_group_id]
 
   max_scale_down_percentage = 100
-
-  shutdown_hours = {
-    time_windows = var.shutdown_time_windows,
-    is_enabled   = var.enable_shutdown_hours
-  }
 
 }
 
